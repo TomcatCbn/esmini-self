@@ -357,7 +357,7 @@ set_target_properties (access-odr PROPERTIES FOLDER ${CodeExamplesFolder} )
 # Download library and content binary packets
 #
 function (download_and_extract url target_folder target_filename)
-  message ("......${CMAKE_COMMAND}......")
+  message ("......${target_filename}......")
   if ( EXISTS ${target_folder}/${target_filename})
     message (STATUS "downloading ${target_filename} ... file exists")
   else ()
@@ -367,7 +367,7 @@ function (download_and_extract url target_folder target_filename)
 	
 	message (STATUS "extracting ${target_filename} ... ")
 	execute_process (COMMAND ${CMAKE_COMMAND} -E tar xfz ${target_filename} WORKING_DIRECTORY ${target_folder})
-	# file (REMOVE ${target_folder}/${target_filename})
+	file (REMOVE ${target_folder}/${target_filename})
   message (STATUS "extracting ${target_filename} ... finish... ${target_folder}/${target_filename}")
 endfunction (download_and_extract)
 
